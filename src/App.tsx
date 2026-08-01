@@ -667,7 +667,7 @@ return (
           <div className="mt-14 flex flex-wrap justify-center gap-5">
 
             <a
-  href="/download/SMD_PRO_v1.0.0.apk"
+  href="/download/SMD_PRO.apk"
   download="SMD_PRO_v1.0.0.apk"
   className="rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-10 py-5 text-lg font-black text-slate-950 transition hover:scale-105"
 >
@@ -937,7 +937,7 @@ return (
           <div className="flex flex-wrap gap-5 mt-10">
 
             <a
-              href="/download/SMD_PRO_v1.0.0.apk"
+              href="/download/SMD_PRO.apk"
 download
               className="px-10 py-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 transition font-bold text-slate-950"
             >
