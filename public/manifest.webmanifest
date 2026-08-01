@@ -1,0 +1,15 @@
+{
+  "name": "SMD PRO",
+  "short_name": "SMD",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "/images/smd-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
