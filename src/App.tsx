@@ -669,7 +669,7 @@ return (
             <a
   href="/download/SMD_PRO.apk"
   download="SMD_PRO_v1.0.0.apk"
-  className="rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-10 py-5 text-lg font-black text-slate-950 transition hover:scale-105"
+  className="rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 px-10 py-5 text-lg font-black text-slate-950 transition hover:scale-105 hover:shadow-[0_0_30px_rgba(34,211,238,0.45)]"
 >
   Download SMD PRO
 </a>
@@ -937,12 +937,12 @@ return (
           <div className="flex flex-wrap gap-5 mt-10">
 
             <a
-              href="/download/SMD_PRO.apk"
-download
-              className="px-10 py-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 transition font-bold text-slate-950"
-            >
-              ⬇ DOWNLOAD APK
-            </a>
+  href="/download/SMD_PRO.apk"
+  download
+  className="px-10 py-4 rounded-xl bg-cyan-500 font-bold text-slate-950 transition-all duration-150 hover:bg-cyan-400 hover:scale-105 hover:shadow-[0_0_30px_rgba(34,211,238,0.45)] active:scale-95 active:bg-cyan-300 active:shadow-inner active:translate-y-1"
+>
+  ⬇ DOWNLOAD APK
+</a>
 
             <a
               href="#contact"
