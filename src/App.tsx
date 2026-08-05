@@ -849,7 +849,7 @@ return (
         </p>
 
         <a
-          href="https://youtu.be/MaIUbP4DDy4"
+          href="https://youtu.be/Q2ssUnAWsr8"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 px-8 py-4 rounded-xl bg-red-600 hover:bg-red-700 transition text-white font-bold"
@@ -858,7 +858,7 @@ return (
         </a>
 
         <a
-        href="https://youtu.be/MaIUbP4DDy4"
+        href="https://youtu.be/Q2ssUnAWsr8"
         target="_blank"
         rel="noopener noreferrer"
         className="mt-4 px-8 py-4 rounded-xl border border-white/30 hover:bg-white/10 transition text-white font-semibold"
