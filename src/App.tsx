@@ -89,8 +89,7 @@ const jantriAmounts = Array.from({ length: 100 }, (_, index) => {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [laptopView, setLaptopView] = useState<LaptopPreviewView>('dashboard');
-  const [previewPaused, setPreviewPaused] = useState(false);
+  const [laptopView, setLaptopView] = useState<LaptopPreviewView>('jantri');
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -99,16 +98,6 @@ function App() {
     window.addEventListener('keydown', closeOnEscape);
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, []);
-
-  useEffect(() => {
-    if (previewPaused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const previewTimer = window.setInterval(() => {
-      setLaptopView((view) => view === 'dashboard' ? 'jantri' : 'dashboard');
-    }, 4800);
-
-    return () => window.clearInterval(previewTimer);
-  }, [previewPaused]);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -248,20 +237,18 @@ function App() {
                 <p>
                   Explore the clean dashboard and the complete entry workspace with its compact
                   10×10 Jantri, entry controls, and live history.
-                  The preview switches automatically, or you can select either screen.
+                  Entry Jantri opens first, and you can select either screen at any time.
                 </p>
                 <div className="preview-tabs" aria-label="Choose laptop preview screen">
                   <button type="button" className={laptopView === 'dashboard' ? 'active' : ''}
                     aria-pressed={laptopView === 'dashboard'} onClick={() => {
                       setLaptopView('dashboard');
-                      setPreviewPaused(true);
                     }}>
                     Dashboard
                   </button>
                   <button type="button" className={laptopView === 'jantri' ? 'active' : ''}
                     aria-pressed={laptopView === 'jantri'} onClick={() => {
                       setLaptopView('jantri');
-                      setPreviewPaused(true);
                     }}>
                     Entry Jantri
                   </button>
