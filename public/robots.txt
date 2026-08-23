@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://smd-website-rose.vercel.app/sitemap.xml
+Sitemap: https://smd-website-smdpro1.vercel.app/sitemap.xml
