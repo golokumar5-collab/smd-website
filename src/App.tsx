@@ -68,6 +68,7 @@ const laptopMenuItems = [
   ['⌁', 'Overall Jantri'],
   ['✓', 'Result Master'],
   ['₹', 'Hisab'],
+  ['●', 'Members Status'],
 ];
 
 const laptopDashboardCards = [
@@ -273,7 +274,7 @@ function App() {
                 <div className="laptop-camera"><span /></div>
                 <div className="laptop-screen">
                   <aside className="demo-sidebar">
-                    <div className="demo-logo">SMD</div>
+                    <div className="demo-brand"><strong>SMD</strong><span>SOFTWARE MANAGEMENT DESK</span></div>
                     <div className="demo-menu">
                       {laptopMenuItems.map(([icon, label], index) => (
                         <div className={
@@ -282,9 +283,15 @@ function App() {
                             ? 'demo-menu-item active'
                             : 'demo-menu-item'
                         } key={label}>
-                          <span>{icon}</span><em>{label}</em>
+                          <span>{icon}</span><em>{label}</em><b>{index === 0 ? 'Home' : `F${index}`}</b>
                         </div>
                       ))}
+                    </div>
+                    <div className="demo-quick-title">QUICK ACTIONS</div>
+                    <div className="demo-quick-menu">
+                      <div><span>⌕</span><em>Search Customer</em><b>Ctrl + K</b></div>
+                      <div><span>⇄</span><em>Switch Market</em><b>Ctrl + M</b></div>
+                      <div><span>↻</span><em>Refresh</em><b>Ctrl + R</b></div>
                     </div>
                     <div className="demo-version">SMD Laptop v1.0.14</div>
                   </aside>
@@ -301,14 +308,14 @@ function App() {
                     ) : (
                       <div className="demo-topbar demo-entry-topbar">
                         <div className="demo-active-market">
-                          <i>◇</i><span><small>ACTIVE MARKET</small><strong>Main Market</strong></span>
+                          <i>◇</i><span><small>ACTIVE MARKET</small><strong>fd</strong></span>
                         </div>
                         <div className="demo-sync-status">
                           <strong><i /> LIVE SYNCED</strong><small>Last Sync: 04:32 pm</small>
                         </div>
                         <div className="demo-session-meta">
-                          <span className="demo-avatar">EM</span>
-                          <span><strong>Employee</strong><small><i /> Online</small></span>
+                          <span className="demo-avatar">JK</span>
+                          <span><strong>Jk</strong><small><i /> Online</small></span>
                           <span className="demo-date"><strong>23 Aug 2026</strong><small>Sunday</small></span>
                           <span className="demo-time"><strong>04:32 pm</strong><small>LIVE</small></span>
                         </div>
@@ -340,7 +347,7 @@ function App() {
                         <div className="demo-entry-controls">
                           <button type="button">← BACK</button>
                           <div className="demo-control-select">Select Customer <b>⌄</b></div>
-                          <div className="demo-control-select">Main Market <b>⌄</b></div>
+                          <div className="demo-control-select">fd <b>⌄</b></div>
                           <div className="demo-set-market">SET ✓</div>
                           <div className="demo-control-date">23-08-2026 <b>□</b></div>
                           {[
@@ -360,12 +367,12 @@ function App() {
                               <b>0 ENTRIES</b>
                             </div>
                             <div className="demo-number-grid">
-                              {jantriAmounts.map((amount, index) => {
+                              {jantriAmounts.map((_, index) => {
                                 const displayNumber = index === 99 ? '100' : String(index + 1).padStart(2, '0');
                                 return (
                                   <div className="jantri-cell" key={displayNumber}>
                                     <span>{displayNumber}</span>
-                                    <strong>{amount > 500 ? amount : 0}</strong>
+                                    <strong>0</strong>
                                   </div>
                                 );
                               })}
