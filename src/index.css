@@ -89,6 +89,8 @@ img { display: block; max-width: 100%; image-rendering: auto; -webkit-user-drag:
 .button-primary:hover { box-shadow: 0 18px 42px rgba(21, 94, 239, .31); }
 .button-secondary { color: #17305a; border-color: #d7e1ee; background: rgba(255, 255, 255, .86); }
 .button-secondary:hover { border-color: #b9cae0; background: #fff; }
+.button-demo { border-color: #ffd0d0; color: #c82626; background: #fffafa; }
+.button-demo:hover { border-color: #f0aaaa; color: #aa1717; background: #fff3f3; }
 .menu-button {
   width: 44px;
   height: 44px;

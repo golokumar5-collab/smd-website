@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 
 const ANDROID_DOWNLOAD = '/download/SMD_PRO.apk';
 const WINDOWS_DOWNLOAD = '/download/SMD-Laptop-Setup-v1.0.14.exe';
+const DEMO_VIDEO = 'https://youtu.be/Q2ssUnAWsr8';
 
 function Icon({ children, size = 20 }: { children: ReactNode; size?: number }) {
   return (
@@ -22,6 +23,10 @@ function ArrowIcon() {
 
 function CheckIcon() {
   return <Icon size={18}><path d="m5 12 4 4L19 6" /></Icon>;
+}
+
+function PlayIcon() {
+  return <Icon size={18}><path d="m8 5 11 7-11 7V5Z" /></Icon>;
 }
 
 function AndroidMark() {
@@ -115,6 +120,7 @@ function App() {
 
           <nav className="desktop-nav" aria-label="Main navigation">
             <a href="#products">Products</a><a href="#laptop-preview">Laptop Preview</a><a href="#features">Features</a>
+            <a href={DEMO_VIDEO} target="_blank" rel="noreferrer">Demo Video</a>
             <a href="#how-it-works">How it works</a><a href="#contact">Support</a>
           </nav>
 
@@ -132,6 +138,7 @@ function App() {
             <a href="#products" onClick={closeMenu}>Products</a>
             <a href="#laptop-preview" onClick={closeMenu}>Laptop Preview</a>
             <a href="#features" onClick={closeMenu}>Features</a>
+            <a href={DEMO_VIDEO} target="_blank" rel="noreferrer" onClick={closeMenu}>Demo Video</a>
             <a href="#how-it-works" onClick={closeMenu}>How it works</a>
             <a href="#contact" onClick={closeMenu}>Support</a>
             <a className="button" href="#download" onClick={closeMenu}>Download</a>
@@ -152,7 +159,9 @@ function App() {
               </p>
               <div className="hero-actions">
                 <a className="button button-primary" href="#download"><DownloadIcon />Download SMD Software</a>
-                <a className="button button-secondary" href="#features">Explore Features <ArrowIcon /></a>
+                <a className="button button-secondary button-demo" href={DEMO_VIDEO} target="_blank" rel="noreferrer">
+                  <PlayIcon /> Watch Demo Video
+                </a>
               </div>
               <div className="hero-points" aria-label="Product highlights">
                 <span><CheckIcon /> Fast entry</span><span><CheckIcon /> Clear Jantri</span>
@@ -495,6 +504,7 @@ function App() {
           <p>Smart Android and Windows software for entries, Jantri, accounts, customers, and markets.</p>
           <div className="footer-links">
             <a href="#products">Products</a><a href="#laptop-preview">Laptop Preview</a><a href="#features">Features</a>
+            <a href={DEMO_VIDEO} target="_blank" rel="noreferrer">Demo Video</a>
             <a href="#download">Download</a><a href="#contact">Support</a>
           </div>
         </div>
