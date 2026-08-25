@@ -56,12 +56,49 @@ const features = [
   { number: '06', title: 'Secure Access', text: 'Protect important business data with verified sign-in and controlled access.' },
 ];
 
-const laptopPlans = [
-  { duration: '1 Month', price: '₹1,299' },
-  { duration: '3 Months', price: '₹3,599' },
-  { duration: '6 Months', price: '₹6,699', badge: 'POPULAR' },
-  { duration: '1 Year', price: '₹11,999', badge: 'BEST VALUE', featured: true },
-];
+type LaptopPlanType = 'single' | 'multi';
+
+type LaptopPlan = {
+  duration: string;
+  price: string;
+  badge?: string;
+  featured?: boolean;
+};
+
+const laptopPlans: Record<LaptopPlanType, LaptopPlan[]> = {
+  single: [
+    { duration: '1 Month', price: '₹1,099' },
+    { duration: '3 Months', price: '₹2,999' },
+    { duration: '6 Months', price: '₹5,499', badge: 'POPULAR' },
+    { duration: '1 Year', price: '₹9,999', badge: 'BEST VALUE', featured: true },
+  ],
+  multi: [
+    { duration: '1 Month', price: '₹1,299' },
+    { duration: '3 Months', price: '₹3,599' },
+    { duration: '6 Months', price: '₹6,699', badge: 'POPULAR' },
+    { duration: '1 Year', price: '₹11,999', badge: 'BEST VALUE', featured: true },
+  ],
+};
+
+const laptopPlanDetails: Record<LaptopPlanType, {
+  label: string;
+  description: string;
+  note: string;
+  features: string[];
+}> = {
+  single: {
+    label: 'Single User',
+    description: 'For an owner working independently on one Windows laptop.',
+    note: 'Single-user Windows subscription',
+    features: ['One verified user', 'Complete SMD Laptop access', 'Updates & installation support'],
+  },
+  multi: {
+    label: 'Multi User',
+    description: 'For a boss managing employees through mobile and Windows access.',
+    note: 'Boss and employee subscription',
+    features: ['Boss and employee access', 'Members status and team control', 'Updates & installation support'],
+  },
+};
 
 const steps = [
   { number: '1', title: 'Choose your platform', text: 'Download the Android APK for mobile or the SMD Laptop installer for your Windows computer.' },
@@ -102,6 +139,7 @@ const jantriAmounts = Array.from({ length: 100 }, (_, index) => {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [laptopView, setLaptopView] = useState<LaptopPreviewView>('jantri');
+  const [pricingMode, setPricingMode] = useState<LaptopPlanType>('single');
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -247,32 +285,47 @@ function App() {
           <div className="container">
             <div className="section-heading centered-heading laptop-pricing-heading">
               <p className="kicker">SMD Laptop subscriptions</p>
-              <h2>Windows plans for every<br />working setup.</h2>
+              <h2>Choose the plan that fits<br />the way you work.</h2>
               <p>
-                Choose a subscription for SMD Laptop on Windows. These plans are separate from
-                the SMD PRO mobile subscription.
+                Select Single User for an independent setup or Multi User for boss and employee access.
+                SMD Laptop plans remain separate from the SMD PRO mobile subscription.
               </p>
             </div>
 
-            <div className="laptop-plan-grid">
-              {laptopPlans.map((plan) => (
+            <div className="laptop-pricing-switch" aria-label="Choose SMD Laptop user type">
+              {(['single', 'multi'] as LaptopPlanType[]).map((type) => (
+                <button
+                  type="button"
+                  className={pricingMode === type ? 'active' : ''}
+                  aria-pressed={pricingMode === type}
+                  onClick={() => setPricingMode(type)}
+                  key={type}
+                >
+                  <strong>{laptopPlanDetails[type].label}</strong>
+                  <span>{laptopPlanDetails[type].description}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="laptop-plan-grid" key={pricingMode}>
+              {laptopPlans[pricingMode].map((plan) => (
                 <article className={plan.featured ? 'laptop-plan-card featured' : 'laptop-plan-card'} key={plan.duration}>
                   <div className="laptop-plan-topline">
                     <span className="laptop-plan-icon"><WindowsMark /></span>
                     {plan.badge && <span className="laptop-plan-badge">{plan.badge}</span>}
                   </div>
-                  <p className="laptop-plan-product">SMD LAPTOP • WINDOWS</p>
+                  <p className="laptop-plan-product">SMD LAPTOP • {laptopPlanDetails[pricingMode].label.toUpperCase()}</p>
                   <h3>{plan.duration}</h3>
                   <div className="laptop-plan-price">{plan.price}</div>
-                  <p className="laptop-plan-note">Premium desktop subscription</p>
+                  <p className="laptop-plan-note">{laptopPlanDetails[pricingMode].note}</p>
                   <ul>
-                    <li><CheckIcon /> Complete SMD Laptop access</li>
-                    <li><CheckIcon /> Latest software updates</li>
-                    <li><CheckIcon /> Installation support</li>
+                    {laptopPlanDetails[pricingMode].features.map((feature) => (
+                      <li key={feature}><CheckIcon /> {feature}</li>
+                    ))}
                   </ul>
                   <a
                     className="laptop-plan-action"
-                    href={`https://wa.me/918448665366?text=${encodeURIComponent(`Hello SMD Support, I want the SMD Laptop ${plan.duration} plan for ${plan.price}.`)}`}
+                    href={`https://wa.me/918448665366?text=${encodeURIComponent(`Hello SMD Support, I want the SMD Laptop ${laptopPlanDetails[pricingMode].label} ${plan.duration} plan for ${plan.price}.`)}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -283,7 +336,7 @@ function App() {
             </div>
 
             <p className="laptop-pricing-footnote">
-              Plans shown above apply only to SMD Laptop for Windows. Contact support to activate your selected plan.
+              Select your user type before choosing a plan. All prices apply only to SMD Laptop for Windows.
             </p>
           </div>
         </section>
