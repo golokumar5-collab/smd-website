@@ -57,6 +57,7 @@ const features = [
 ];
 
 type LaptopPlanType = 'single' | 'multi';
+type PricingProduct = 'android' | 'laptop';
 
 type LaptopPlan = {
   duration: string;
@@ -78,6 +79,20 @@ const laptopPlans: Record<LaptopPlanType, LaptopPlan[]> = {
     { duration: '6 Months', price: '₹6,699', badge: 'POPULAR' },
     { duration: '1 Year', price: '₹11,999', badge: 'BEST VALUE', featured: true },
   ],
+};
+
+const androidPlans: LaptopPlan[] = [
+  { duration: '1 Month', price: '₹799' },
+  { duration: '3 Months', price: '₹2,199', badge: 'MOST POPULAR' },
+  { duration: '6 Months', price: '₹4,499', badge: 'BEST VALUE' },
+  { duration: '1 Year', price: '₹8,999', badge: 'FULL PREMIUM', featured: true },
+];
+
+const androidPlanDetails = {
+  label: 'SMD PRO Android',
+  description: 'Premium mobile access for individual SMD PRO users.',
+  note: 'SMD PRO mobile subscription',
+  features: ['Complete SMD PRO access', 'Android mobile application', 'Updates and customer support'],
 };
 
 const laptopPlanDetails: Record<LaptopPlanType, {
@@ -139,6 +154,7 @@ const jantriAmounts = Array.from({ length: 100 }, (_, index) => {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [laptopView, setLaptopView] = useState<LaptopPreviewView>('jantri');
+  const [pricingProduct, setPricingProduct] = useState<PricingProduct>('android');
   const [pricingMode, setPricingMode] = useState<LaptopPlanType>('single');
 
   useEffect(() => {
@@ -150,6 +166,17 @@ function App() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+  const showingAndroidPlans = pricingProduct === 'android';
+  const activePlans = showingAndroidPlans ? androidPlans : laptopPlans[pricingMode];
+  const activePlanLabel = showingAndroidPlans
+    ? androidPlanDetails.label
+    : `SMD Laptop ${laptopPlanDetails[pricingMode].label}`;
+  const activePlanNote = showingAndroidPlans
+    ? androidPlanDetails.note
+    : laptopPlanDetails[pricingMode].note;
+  const activePlanFeatures = showingAndroidPlans
+    ? androidPlanDetails.features
+    : laptopPlanDetails[pricingMode].features;
 
   return (
     <div className="site-shell">
@@ -284,48 +311,80 @@ function App() {
         <section className="section laptop-pricing-section" id="laptop-pricing">
           <div className="container">
             <div className="section-heading centered-heading laptop-pricing-heading">
-              <p className="kicker">SMD Laptop subscriptions</p>
-              <h2>Choose the plan that fits<br />the way you work.</h2>
+              <p className="kicker">SMD subscriptions</p>
+              <h2>Android and Windows plans,<br />clearly separated.</h2>
               <p>
-                Select Single User for an independent setup or Multi User for boss and employee access.
-                SMD Laptop plans remain separate from the SMD PRO mobile subscription.
+                Choose SMD PRO for Android mobile access or SMD Laptop for Windows.
+                Each product has its own clear subscription listing.
               </p>
             </div>
 
-            <div className="laptop-pricing-switch" aria-label="Choose SMD Laptop user type">
-              {(['single', 'multi'] as LaptopPlanType[]).map((type) => (
-                <button
-                  type="button"
-                  className={pricingMode === type ? 'active' : ''}
-                  aria-pressed={pricingMode === type}
-                  onClick={() => setPricingMode(type)}
-                  key={type}
-                >
-                  <strong>{laptopPlanDetails[type].label}</strong>
-                  <span>{laptopPlanDetails[type].description}</span>
-                </button>
-              ))}
+            <div className="pricing-product-switch" aria-label="Choose SMD subscription product">
+              <button
+                type="button"
+                className={pricingProduct === 'android' ? 'active android' : ''}
+                aria-pressed={pricingProduct === 'android'}
+                onClick={() => setPricingProduct('android')}
+              >
+                <span className="pricing-switch-icon"><AndroidMark /></span>
+                <span className="pricing-switch-copy">
+                  <strong>SMD PRO</strong><small>Android mobile subscription</small>
+                </span>
+              </button>
+              <button
+                type="button"
+                className={pricingProduct === 'laptop' ? 'active laptop' : ''}
+                aria-pressed={pricingProduct === 'laptop'}
+                onClick={() => setPricingProduct('laptop')}
+              >
+                <span className="pricing-switch-icon"><WindowsMark /></span>
+                <span className="pricing-switch-copy">
+                  <strong>SMD Laptop</strong><small>Windows computer subscription</small>
+                </span>
+              </button>
             </div>
 
-            <div className="laptop-plan-grid" key={pricingMode}>
-              {laptopPlans[pricingMode].map((plan) => (
-                <article className={plan.featured ? 'laptop-plan-card featured' : 'laptop-plan-card'} key={plan.duration}>
+            {!showingAndroidPlans && (
+              <div className="laptop-pricing-switch" aria-label="Choose SMD Laptop user type">
+                {(['single', 'multi'] as LaptopPlanType[]).map((type) => (
+                  <button
+                    type="button"
+                    className={pricingMode === type ? 'active' : ''}
+                    aria-pressed={pricingMode === type}
+                    onClick={() => setPricingMode(type)}
+                    key={type}
+                  >
+                    <strong>{laptopPlanDetails[type].label}</strong>
+                    <span>{laptopPlanDetails[type].description}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <div className="laptop-plan-grid" key={`${pricingProduct}-${pricingMode}`}>
+              {activePlans.map((plan) => (
+                <article
+                  className={`laptop-plan-card${plan.featured ? ' featured' : ''}${showingAndroidPlans ? ' android-plan' : ''}`}
+                  key={plan.duration}
+                >
                   <div className="laptop-plan-topline">
-                    <span className="laptop-plan-icon"><WindowsMark /></span>
+                    <span className="laptop-plan-icon">
+                      {showingAndroidPlans ? <AndroidMark /> : <WindowsMark />}
+                    </span>
                     {plan.badge && <span className="laptop-plan-badge">{plan.badge}</span>}
                   </div>
-                  <p className="laptop-plan-product">SMD LAPTOP • {laptopPlanDetails[pricingMode].label.toUpperCase()}</p>
+                  <p className="laptop-plan-product">{activePlanLabel.toUpperCase()}</p>
                   <h3>{plan.duration}</h3>
                   <div className="laptop-plan-price">{plan.price}</div>
-                  <p className="laptop-plan-note">{laptopPlanDetails[pricingMode].note}</p>
+                  <p className="laptop-plan-note">{activePlanNote}</p>
                   <ul>
-                    {laptopPlanDetails[pricingMode].features.map((feature) => (
+                    {activePlanFeatures.map((feature) => (
                       <li key={feature}><CheckIcon /> {feature}</li>
                     ))}
                   </ul>
                   <a
                     className="laptop-plan-action"
-                    href={`https://wa.me/918448665366?text=${encodeURIComponent(`Hello SMD Support, I want the SMD Laptop ${laptopPlanDetails[pricingMode].label} ${plan.duration} plan for ${plan.price}.`)}`}
+                    href={`https://wa.me/918448665366?text=${encodeURIComponent(`Hello SMD Support, I want the ${activePlanLabel} ${plan.duration} plan for ${plan.price}.`)}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -336,7 +395,7 @@ function App() {
             </div>
 
             <p className="laptop-pricing-footnote">
-              Select your user type before choosing a plan. All prices apply only to SMD Laptop for Windows.
+              Android and Windows subscriptions are separate. Select the correct product before choosing your plan.
             </p>
           </div>
         </section>

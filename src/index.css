@@ -401,9 +401,59 @@ img { display: block; max-width: 100%; image-rendering: auto; -webkit-user-drag:
 }
 .laptop-pricing-section .container { position: relative; }
 .laptop-pricing-heading > p:last-child { max-width: 710px; }
-.laptop-pricing-switch {
+.pricing-product-switch {
   max-width: 790px;
   margin: 42px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  border: 1px solid #cfddec;
+  border-radius: 24px;
+  padding: 8px;
+  background: rgba(255, 255, 255, .9);
+  box-shadow: 0 18px 50px rgba(30, 65, 112, .1);
+}
+.pricing-product-switch button {
+  min-width: 0;
+  min-height: 88px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  padding: 13px 17px;
+  color: #63728a;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: color 170ms ease, background-color 170ms ease, border-color 170ms ease, box-shadow 170ms ease;
+}
+.pricing-switch-icon {
+  width: 49px;
+  height: 49px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: #155eef;
+  background: #edf4ff;
+}
+.pricing-switch-icon svg { width: 25px; height: 25px; }
+.pricing-switch-copy { min-width: 0; display: grid; gap: 4px; }
+.pricing-switch-copy strong { color: #253c5e; font-size: 17px; }
+.pricing-switch-copy small { color: #708097; font-size: 11px; font-weight: 700; }
+.pricing-product-switch button.active {
+  border-color: #a9c8fb;
+  background: linear-gradient(145deg, #eaf2ff, #fff);
+  box-shadow: 0 10px 27px rgba(21, 94, 239, .12);
+}
+.pricing-product-switch button.active strong { color: #155eef; }
+.pricing-product-switch button.active.android { border-color: #a7ddc8; background: linear-gradient(145deg, #ebfaf4, #fff); }
+.pricing-product-switch button.active.android .pricing-switch-icon { color: #0a9b66; background: #e7f9f1; }
+.pricing-product-switch button.active.android strong { color: #087b53; }
+.laptop-pricing-switch {
+  max-width: 680px;
+  margin: 14px auto 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
@@ -557,6 +607,11 @@ img { display: block; max-width: 100%; image-rendering: auto; -webkit-user-drag:
 }
 .laptop-plan-action:hover { transform: translateY(-2px); background: #155eef; }
 .laptop-plan-card.featured .laptop-plan-action { background: #155eef; }
+.laptop-plan-card.android-plan .laptop-plan-icon { color: #0a9b66; background: #e8faf2; }
+.laptop-plan-card.android-plan .laptop-plan-price { color: #08885b; }
+.laptop-plan-card.android-plan.featured { border-color: #9bd8bf; background: linear-gradient(155deg, #ebfaf4, #fff 64%); box-shadow: 0 22px 60px rgba(14, 165, 107, .14); }
+.laptop-plan-card.android-plan.featured::after { background: rgba(14, 165, 107, .09); }
+.laptop-plan-card.android-plan.featured .laptop-plan-action { background: #09885b; }
 .laptop-pricing-footnote {
   max-width: 750px;
   margin: 25px auto 0;
@@ -1682,7 +1737,10 @@ img { display: block; max-width: 100%; image-rendering: auto; -webkit-user-drag:
   .section-heading h2, .workflow-copy h2, .download-copy h2, .support-grid h2 { font-size: clamp(33px, 10vw, 44px); }
   .section-heading > p:last-child, .workflow-copy > p, .download-copy > p, .support-grid > div > p:last-child { font-size: 14px; }
   .product-grid { margin-top: 38px; }
-  .laptop-pricing-switch { margin-top: 32px; grid-template-columns: 1fr; border-radius: 19px; }
+  .pricing-product-switch { margin-top: 32px; grid-template-columns: 1fr; border-radius: 20px; }
+  .pricing-product-switch button { min-height: 78px; border-radius: 15px; padding: 11px 14px; }
+  .pricing-switch-icon { width: 45px; height: 45px; border-radius: 13px; }
+  .laptop-pricing-switch { grid-template-columns: 1fr; border-radius: 19px; }
   .laptop-pricing-switch button { min-height: 72px; border-radius: 14px; padding-inline: 15px; }
   .laptop-plan-grid { margin-top: 22px; grid-template-columns: 1fr; }
   .laptop-plan-card { border-radius: 21px; padding: 23px 21px; }
