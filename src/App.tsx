@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
 
-const ANDROID_DOWNLOAD = '/download/SMD_PRO.apk';
+const ANDROID_DOWNLOAD = '/download/SMD-PRO-v1.0.2.apk';
 const WINDOWS_DOWNLOAD = '/download/SMD-Laptop-Setup-v1.0.16.exe';
 const DEMO_VIDEO = 'https://youtu.be/Q2ssUnAWsr8';
 
