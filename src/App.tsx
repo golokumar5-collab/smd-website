@@ -274,7 +274,7 @@ function App() {
               <article className="product-card product-android">
                 <div className="product-topline">
                   <span className="platform-icon"><AndroidMark /></span>
-                  <span className="version-chip">Version 1.0.0</span>
+                  <span className="version-chip"><span className="version-chip">Version 1.0.2</span></span>
                 </div>
                 <p className="product-label">FOR ANDROID</p><h3>SMD PRO</h3>
                 <p>A complete Android application for managing entries, accounts, customers, and Jantri from your phone.</p>
@@ -283,7 +283,7 @@ function App() {
                   <li><CheckIcon /> Mobile-friendly workflow</li>
                   <li><CheckIcon /> Latest official public build</li>
                 </ul>
-                <a className="download-link" href={ANDROID_DOWNLOAD} download="SMD-PRO-v1.0.0.apk">
+                <a className="download-link" href={ANDROID_DOWNLOAD} download="SMD-PRO-v1.0.2.apk">
                   <span><DownloadIcon /> Android APK download</span><small>APK • 68.6 MB</small>
                 </a>
               </article>
@@ -628,9 +628,9 @@ function App() {
               <div className="secure-note"><CheckIcon /> Verified SMD release files</div>
             </div>
             <div className="download-options">
-              <a className="download-option" href={ANDROID_DOWNLOAD} download="SMD-PRO-v1.0.0.apk">
+              <a className="download-option" href={ANDROID_DOWNLOAD} download="SMD-PRO-v1.0.2.apk">
                 <span className="download-platform"><AndroidMark /></span>
-                <span className="download-details"><small>Android mobile</small><strong>Download SMD PRO</strong><em>v1.0.0 • APK • 68.6 MB</em></span>
+                <span className="download-details"><small>Android mobile</small><strong>Download SMD PRO</strong><em>v1.0.2 • APK • 39.5 MB</em></span>
                 <span className="round-arrow"><DownloadIcon /></span>
               </a>
               <a className="download-option" href={WINDOWS_DOWNLOAD} download="SMD-Laptop-Setup-v1.0.16.exe">
