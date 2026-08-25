@@ -56,6 +56,13 @@ const features = [
   { number: '06', title: 'Secure Access', text: 'Protect important business data with verified sign-in and controlled access.' },
 ];
 
+const laptopPlans = [
+  { duration: '1 Month', price: '₹1,299' },
+  { duration: '3 Months', price: '₹3,599' },
+  { duration: '6 Months', price: '₹6,699', badge: 'POPULAR' },
+  { duration: '1 Year', price: '₹11,999', badge: 'BEST VALUE', featured: true },
+];
+
 const steps = [
   { number: '1', title: 'Choose your platform', text: 'Download the Android APK for mobile or the SMD Laptop installer for your Windows computer.' },
   { number: '2', title: 'Install and sign in', text: 'Sign in with your verified account, then select the market or customer for the current session.' },
@@ -119,7 +126,7 @@ function App() {
           </a>
 
           <nav className="desktop-nav" aria-label="Main navigation">
-            <a href="#products">Products</a><a href="#laptop-preview">Laptop Preview</a><a href="#features">Features</a>
+            <a href="#products">Products</a><a href="#laptop-pricing">Pricing</a><a href="#laptop-preview">Laptop Preview</a><a href="#features">Features</a>
             <a href={DEMO_VIDEO} target="_blank" rel="noreferrer">Demo Video</a>
             <a href="#how-it-works">How it works</a><a href="#contact">Support</a>
           </nav>
@@ -136,6 +143,7 @@ function App() {
         {menuOpen && (
           <nav className="mobile-nav" aria-label="Mobile navigation">
             <a href="#products" onClick={closeMenu}>Products</a>
+            <a href="#laptop-pricing" onClick={closeMenu}>Pricing</a>
             <a href="#laptop-preview" onClick={closeMenu}>Laptop Preview</a>
             <a href="#features" onClick={closeMenu}>Features</a>
             <a href={DEMO_VIDEO} target="_blank" rel="noreferrer" onClick={closeMenu}>Demo Video</a>
@@ -232,6 +240,51 @@ function App() {
                 </a>
               </article>
             </div>
+          </div>
+        </section>
+
+        <section className="section laptop-pricing-section" id="laptop-pricing">
+          <div className="container">
+            <div className="section-heading centered-heading laptop-pricing-heading">
+              <p className="kicker">SMD Laptop subscriptions</p>
+              <h2>Windows plans for every<br />working setup.</h2>
+              <p>
+                Choose a subscription for SMD Laptop on Windows. These plans are separate from
+                the SMD PRO mobile subscription.
+              </p>
+            </div>
+
+            <div className="laptop-plan-grid">
+              {laptopPlans.map((plan) => (
+                <article className={plan.featured ? 'laptop-plan-card featured' : 'laptop-plan-card'} key={plan.duration}>
+                  <div className="laptop-plan-topline">
+                    <span className="laptop-plan-icon"><WindowsMark /></span>
+                    {plan.badge && <span className="laptop-plan-badge">{plan.badge}</span>}
+                  </div>
+                  <p className="laptop-plan-product">SMD LAPTOP • WINDOWS</p>
+                  <h3>{plan.duration}</h3>
+                  <div className="laptop-plan-price">{plan.price}</div>
+                  <p className="laptop-plan-note">Premium desktop subscription</p>
+                  <ul>
+                    <li><CheckIcon /> Complete SMD Laptop access</li>
+                    <li><CheckIcon /> Latest software updates</li>
+                    <li><CheckIcon /> Installation support</li>
+                  </ul>
+                  <a
+                    className="laptop-plan-action"
+                    href={`https://wa.me/918448665366?text=${encodeURIComponent(`Hello SMD Support, I want the SMD Laptop ${plan.duration} plan for ${plan.price}.`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Choose plan <ArrowIcon />
+                  </a>
+                </article>
+              ))}
+            </div>
+
+            <p className="laptop-pricing-footnote">
+              Plans shown above apply only to SMD Laptop for Windows. Contact support to activate your selected plan.
+            </p>
           </div>
         </section>
 
@@ -503,7 +556,7 @@ function App() {
           </a>
           <p>Smart Android and Windows software for entries, Jantri, accounts, customers, and markets.</p>
           <div className="footer-links">
-            <a href="#products">Products</a><a href="#laptop-preview">Laptop Preview</a><a href="#features">Features</a>
+            <a href="#products">Products</a><a href="#laptop-pricing">Pricing</a><a href="#laptop-preview">Laptop Preview</a><a href="#features">Features</a>
             <a href={DEMO_VIDEO} target="_blank" rel="noreferrer">Demo Video</a>
             <a href="#download">Download</a><a href="#contact">Support</a>
           </div>
