@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 
 const ANDROID_DOWNLOAD = '/download/SMD-PRO-v1.0.2.apk';
-const WINDOWS_DOWNLOAD = '/download/SMD-Laptop-Setup-v1.0.16.exe?release=20260828-input-focus';
+const WINDOWS_DOWNLOAD = '/download/SMD-Laptop-Setup-v1.0.16.exe?release=20260828-click-layer-fix';
 const DEMO_VIDEO = 'https://youtu.be/Q2ssUnAWsr8';
 
 function Icon({ children, size = 20 }: { children: ReactNode; size?: number }) {
