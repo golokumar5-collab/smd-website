@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 
 const ANDROID_DOWNLOAD = '/download/SMD-PRO-v1.0.2.apk';
-const WINDOWS_DOWNLOAD = '/download/SMD-Laptop-Setup-v1.0.16.exe?release=20260828-click-layer-fix';
+const WINDOWS_DOWNLOAD = '/download/SMD-Laptop-Setup-v1.0.17.exe';
 const DEMO_VIDEO = 'https://youtu.be/Q2ssUnAWsr8';
 
 function Icon({ children, size = 20 }: { children: ReactNode; size?: number }) {
@@ -291,7 +291,7 @@ function App() {
               <article className="product-card product-windows">
                 <div className="product-topline">
                   <span className="platform-icon"><WindowsMark /></span>
-                  <span className="version-chip">Version 1.0.16</span>
+                  <span className="version-chip">Version 1.0.17</span>
                 </div>
                 <p className="product-label">FOR WINDOWS</p><h3>SMD Laptop</h3>
                 <p>A complete desktop workspace with a full entry panel, 10×10 Jantri, and focused activity history.</p>
@@ -300,7 +300,7 @@ function App() {
                   <li><CheckIcon /> Responsive 13–50 inch layout</li>
                   <li><CheckIcon /> Boss & employee login support</li>
                 </ul>
-                <a className="download-link" href={WINDOWS_DOWNLOAD} download="SMD-Laptop-Setup-v1.0.16.exe">
+                <a className="download-link" href={WINDOWS_DOWNLOAD} download="SMD-Laptop-Setup-v1.0.17.exe">
                   <span><DownloadIcon /> Windows setup download</span><small>EXE • 95.6 MB</small>
                 </a>
               </article>
@@ -454,7 +454,7 @@ function App() {
                       <div><span>⇄</span><em>Switch Market</em><b>Ctrl + M</b></div>
                       <div><span>↻</span><em>Refresh</em><b>Ctrl + R</b></div>
                     </div>
-                    <div className="demo-version">SMD Laptop v1.0.16</div>
+                    <div className="demo-version">SMD Laptop v1.0.17</div>
                   </aside>
 
                   <div className="demo-main">
@@ -633,9 +633,9 @@ function App() {
                 <span className="download-details"><small>Android mobile</small><strong>Download SMD PRO</strong><em>v1.0.2 • APK • 39.5 MB</em></span>
                 <span className="round-arrow"><DownloadIcon /></span>
               </a>
-              <a className="download-option" href={WINDOWS_DOWNLOAD} download="SMD-Laptop-Setup-v1.0.16.exe">
+              <a className="download-option" href={WINDOWS_DOWNLOAD} download="SMD-Laptop-Setup-v1.0.17.exe">
                 <span className="download-platform"><WindowsMark /></span>
-                <span className="download-details"><small>Windows computer</small><strong>Download SMD Laptop</strong><em>v1.0.16 • EXE • 95.6 MB</em></span>
+                <span className="download-details"><small>Windows computer</small><strong>Download SMD Laptop</strong><em>v1.0.17 • EXE • 95.6 MB</em></span>
                 <span className="round-arrow"><DownloadIcon /></span>
               </a>
             </div>
