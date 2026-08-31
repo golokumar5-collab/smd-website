@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
 
-const ANDROID_DOWNLOAD = '/download/SMD-PRO-v1.2.1.apk';
+const ANDROID_DOWNLOAD = '/download/SMD-PRO-v1.3.0.apk';
 const WINDOWS_DOWNLOAD = '/download/SMD-Laptop-Setup-v1.0.17.exe';
 const DEMO_VIDEO = 'https://youtu.be/Q2ssUnAWsr8';
 
@@ -283,7 +283,7 @@ function App() {
                   <li><CheckIcon /> Mobile-friendly workflow</li>
                   <li><CheckIcon /> Latest official public build</li>
                 </ul>
-                <a className="download-link" href={ANDROID_DOWNLOAD} download="SMD-PRO-v1.2.1.apk">
+                <a className="download-link" href={ANDROID_DOWNLOAD} download="SMD-PRO-v1.3.0.apk">
                   <span><DownloadIcon /> Android APK download</span><small>APK • 68.6 MB</small>
                 </a>
               </article>
@@ -628,9 +628,9 @@ function App() {
               <div className="secure-note"><CheckIcon /> Verified SMD release files</div>
             </div>
             <div className="download-options">
-              <a className="download-option" href={ANDROID_DOWNLOAD} download="SMD-PRO-v1.2.1.apk">
+              <a className="download-option" href={ANDROID_DOWNLOAD} download="SMD-PRO-v1.3.0.apk">
                 <span className="download-platform"><AndroidMark /></span>
-                <span className="download-details"><small>Android mobile</small><strong>Download SMD PRO</strong><em>v1.2.1 • APK • 76.7 MB</em></span>
+                <span className="download-details"><small>Android mobile</small><strong>Download SMD PRO</strong><em>v1.3.0 • APK • 76.8 MB</em></span>
                 <span className="round-arrow"><DownloadIcon /></span>
               </a>
               <a className="download-option" href={WINDOWS_DOWNLOAD} download="SMD-Laptop-Setup-v1.0.17.exe">
